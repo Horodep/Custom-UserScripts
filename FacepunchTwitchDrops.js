@@ -4,7 +4,7 @@
 // @version      2024-05-27
 // @author       Horodep
 // @namespace    https://github.com/Horodep/Custom-UserScripts/
-// @updateURL    https://github.com/Horodep/Custom-UserScripts/blob/master/FacepunchTwitchDrops.js
+// @updateURL    https://raw.githubusercontent.com/Horodep/Custom-UserScripts/main/FacepunchTwitchDrops.js
 // @supportURL   https://github.com/Horodep/Custom-UserScripts/
 // @match        https://twitch.facepunch.com/
 // @icon         https://twitch.facepunch.com/favicon.png
