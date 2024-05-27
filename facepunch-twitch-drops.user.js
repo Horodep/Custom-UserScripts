@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Facepunch Twitch Drops
 // @namespace    http://tampermonkey.net/
-// @version      2024-05-27
+// @version      0.2
 // @author       Horodep
 // @namespace    https://github.com/Horodep/Custom-UserScripts/
 // @updateURL    https://raw.githubusercontent.com/Horodep/Custom-UserScripts/main/facepunch-twitch-drops.user.js
@@ -28,13 +28,15 @@
             console.log(id);
 
             var value = GM_getValue(id) ?? false;
+
+            if (value) $(val).css ( { opacity: "0.1" } );
+
             var wrapper = $('<div>', { class: "customcheck" });
             $(val).append(wrapper);
             var round = $('<div>', { class: "round" });
             $(wrapper).append(round);
             $(round).append($('<input>', { type: "checkbox", id: id, checked: value, click: onClick }));
             $(round).append($('<label>', { for: id }));
-
         }catch(e){
             console.log(e);
             console.log($(val));
@@ -44,8 +46,9 @@
     function onClick(event) {
         var target = event.target;
         GM_setValue(target.id, target.checked);
+        var box = $(target)[0].parentElement.parentElement.parentElement;
+        $(box).css ( { opacity: target.checked ? "0.1" : "1" } );
     }
-
 
     GM_addStyle ( `
     @media screen and (min-width: 1204px) {
@@ -53,67 +56,64 @@
             max-width: 100%;
         }
     }
+    
     @media screen and (min-width: 1024px) {
         .container {
             max-width: 100%;
         }
     }
+    
     .container {
         max-width: 100%;
     }
+    
     .section.drops .drops-container.is-row-3 .drop-box {
         flex: 0 0 calc(20% - 50px);
     }
-	.customcheck .round {
-		position: absolute;
-		right: 10px;
-		bottom: 10px;
-	}
 
-	.customcheck .round label {
-		background-color: #fff;
-		border: 1px solid #ccc;
-		border-radius: 50%;
-		cursor: pointer;
-		height: 56px;
-		width: 56px;
-		display: block;
-	}
+    .customcheck .round {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
 
-	.customcheck .round label:after {
-		border: 4px solid #fff;
-		border-top: none;
-		border-right: none;
-		content: "";
-		height: 12px;
-		left: 16px;
-		opacity: 0;
-		position: absolute;
-		top: 19px;
-		transform: rotate(-45deg);
-		width: 24px;
-	}
+    .customcheck .round label {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 56px;
+        width: 56px;
+        display: block;
+    }
 
-	.customcheck .round input[type="checkbox"] {
-		visibility: hidden;
-		display: none;
-		opacity: 0;
-	}
+    .customcheck .round label:after {
+        border: 4px solid #fff;
+        border-top: none;
+        border-right: none;
+        content: "";
+        height: 12px;
+        left: 16px;
+        opacity: 0;
+        position: absolute;
+        top: 19px;
+        transform: rotate(-45deg);
+        width: 24px;
+    }
 
-	.customcheck .round input[type="checkbox"]:checked + label {
-		background-color: #66bb6a;
-		border-color: #66bb6a;
-	}
+    .customcheck .round input[type="checkbox"] {
+        visibility: hidden;
+        display: none;
+        opacity: 0;
+    }
 
-	.customcheck .round input[type="checkbox"]:checked + label:after {
-		opacity: 1;
-	}
+    .customcheck .round input[type="checkbox"]:checked + label {
+        background-color: #66bb6a;
+        border-color: #66bb6a;
+    }
+
+    .customcheck .round input[type="checkbox"]:checked + label:after {
+        opacity: 1;
+    }
     ` );
 })();
-
-
-
-
-
-
-
