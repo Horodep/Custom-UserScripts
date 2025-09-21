@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Facepunch Twitch Drops
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.2.1
 // @author       Horodep
 // @namespace    https://github.com/Horodep/Custom-UserScripts/
 // @updateURL    https://raw.githubusercontent.com/Horodep/Custom-UserScripts/main/facepunch-twitch-drops.user.js
@@ -69,6 +69,11 @@
     
     .section.drops .drops-container.is-row-3 .drop-box {
         flex: 0 0 calc(20% - 50px);
+    }
+
+    .drop-box-body{
+        aspect-ratio : 1 / 1;
+        min-height: 260px !important;
     }
 
     .customcheck .round {
