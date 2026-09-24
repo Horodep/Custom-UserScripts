@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Facepunch Twitch Drops
 // @namespace    http://tampermonkey.net/
-// @version      0.2.1
+// @version      0.2.2
 // @author       Horodep
 // @namespace    https://github.com/Horodep/Custom-UserScripts/
 // @updateURL    https://raw.githubusercontent.com/Horodep/Custom-UserScripts/main/facepunch-twitch-drops.user.js
 // @supportURL   https://github.com/Horodep/Custom-UserScripts/
 // @match        https://twitch.facepunch.com/
+// @match        https://kick.facepunch.com/
 // @icon         https://twitch.facepunch.com/favicon.png
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js
 // @grant        GM_getValue
@@ -56,19 +57,19 @@
             max-width: 100%;
         }
     }
-    
+
     @media screen and (min-width: 1024px) {
         .container {
             max-width: 100%;
         }
     }
-    
+
     .container {
         max-width: 100%;
     }
-    
-    .section.drops .drops-container.is-row-3 .drop-box {
-        flex: 0 0 calc(20% - 50px);
+
+    .section.drops .drops-container.is-row-4 .drop-box {
+        flex: 0 0 calc((100% / 6) - 25px);
     }
 
     .drop-box-body{
